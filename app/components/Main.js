@@ -1,22 +1,15 @@
 // Include React
-// var React = require("react");
 import React from "react";
 
 // Here we include all of the sub-components
-// var Form = require("./children/Form");
-// var Results = require("./children/Results");
-// var History = require("./children/History");
-
 import Form from "./children/Form";
 import Results from "./children/Results";
-import History from "./children/History";
+import Saved from "./children/Saved";
 
 // Helper for making AJAX requests to our API
-// var helpers = require("./utils/helpers");
 import helpers from "./utils/helpers";
 
 // Creating the Main component
-// var Main = React.createClass
 class Main extends React.Component{
 
     // This is the equivalent of our "getInitialState"
@@ -27,20 +20,20 @@ class Main extends React.Component{
         this.state = {
             searchTerm: "",
             results: "",
-            history: []
+            Saved: []
         };
 
         this.setTerm = this.setTerm.bind(this);
     }
 
-    // The moment the page renders get the History
+    // The moment the page renders get the Saved
     componentDidMount() {
-        // Get the latest history.
-        helpers.getHistory().then(function (response) {
+        // Get the latest Saved.
+        helpers.getSaved().then(function (response) {
             console.log(response);
-            if (response !== this.state.history) {
-                console.log("History", response.data);
-                this.setState({history: response.data});
+            if (response !== this.state.Saved) {
+                console.log("Saved", response.data);
+                this.setState({Saved: response.data});
             }
         }.bind(this));
     }
@@ -54,17 +47,17 @@ class Main extends React.Component{
                 console.log("Address", data);
                 this.setState({results: data});
 
-                // After we've received the result... then post the search term to our history.
-                helpers.postHistory(this.state.searchTerm).then(function () {
+                // After we've received the result... then post the search term to our Saved.
+                helpers.postSaved(this.state.searchTerm).then(function () {
                     console.log("Updated!");
 
-                    // After we've done the post... then get the updated history
-                    helpers.getHistory().then(function (response) {
-                        console.log("Current History", response.data);
+                    // After we've done the post... then get the updated Saved
+                    helpers.getSaved().then(function (response) {
+                        console.log("Current Saved", response.data);
 
-                        console.log("History", response.data);
+                        console.log("Saved", response.data);
 
-                        this.setState({history: response.data});
+                        this.setState({Saved: response.data});
 
                     }.bind(this));
                 }.bind(this));
@@ -103,7 +96,7 @@ class Main extends React.Component{
 
                 <div className="row">
 
-                    <History history={this.state.history}/>
+                    <Saved Saved={this.state.Saved}/>
 
                 </div>
 

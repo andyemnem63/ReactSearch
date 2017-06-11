@@ -1,5 +1,4 @@
 // Include React
-// var React = require("react");
 import React from "react";
 // Creating the Form component
 class Form extends React.Component

@@ -1,5 +1,4 @@
 // Include React
-// var React = require("react");
 import React from "react";
 
 // Creating the Results component
@@ -21,5 +20,4 @@ class Results extends React.Component{
 };
 
 // Export the component back for use in other files
-// module.exports = Results;
 export default Results;
