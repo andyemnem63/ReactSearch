@@ -41,10 +41,10 @@ class Main extends React.Component{
     // If the component changes (i.e. if a search is entered)...
     componentDidUpdate(){
 
-        // Run the query for the address
+        // Run the query for the Search
         helpers.runQuery(this.state.searchTerm).then(function (data) {
             if (data !== this.state.results) {
-                console.log("Address", data);
+                console.log("Search Data", data);
                 this.setState({results: data});
 
                 // After we've received the result... then post the search term to our Saved.
@@ -88,7 +88,7 @@ class Main extends React.Component{
 
                     <div className="col-md-6">
 
-                        <Results address={this.state.results}/>
+                        <Results results={this.state.results}/>
 
                     </div>
 
