@@ -8,12 +8,13 @@ var geocodeAPI = "35e5548c618555b1a43eb4759d26b260";
 var helper = {
 
   // This function serves our purpose of running the query to geolocate.
-  runQuery: function(location) {
+  runQuery: function(title, starYear) {
 
-    console.log(location);
+    console.log("helper  " + title);
+    console.log("helper  " + starYear);
 
-    // Figure out the geolocation
-    var queryURL = "http://api.opencagedata.com/geocode/v1/json?query=" + location + "&pretty=1&key=" + geocodeAPI;
+    // Figure out the geotitle
+    var queryURL = "http://api.opencagedata.com/geocode/v1/json?query=" + title + "&pretty=1&key=" + geocodeAPI;
     return axios.get(queryURL).then(function(response) {
       // If get get a result, return that result's formatted address property
       if (response.data.results[0]) {

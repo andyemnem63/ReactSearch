@@ -19,20 +19,22 @@ class Main extends React.Component{
 
         this.state = {
             searchTerm: "",
+            starYear: "",
             results: "",
             Saved: []
         };
 
         this.setTerm = this.setTerm.bind(this);
+        this.setStartYear = this.setStartYear.bind(this);
     }
 
     // The moment the page renders get the Saved
     componentDidMount() {
         // Get the latest Saved.
         helpers.getSaved().then(function (response) {
-            console.log(response);
+            // console.log(response);
             if (response !== this.state.Saved) {
-                console.log("Saved", response.data);
+                // console.log("Saved", response.data);
                 this.setState({Saved: response.data});
             }
         }.bind(this));
@@ -40,22 +42,24 @@ class Main extends React.Component{
 
     // If the component changes (i.e. if a search is entered)...
     componentDidUpdate(){
-
+        // console.log("Main term  " + this.state.searchTerm);
+        // console.log("Main Year  " + this.state.starYear);
         // Run the query for the Search
-        helpers.runQuery(this.state.searchTerm).then(function (data) {
+        helpers.runQuery(this.state.searchTerm, this.state.starYear).then(function (data) {
             if (data !== this.state.results) {
-                console.log("Search Data", data);
+                // console.log("Title", this.state.searchTerm);
+                // console.log("Search Data", data);
                 this.setState({results: data});
 
                 // After we've received the result... then post the search term to our Saved.
                 helpers.postSaved(this.state.searchTerm).then(function () {
-                    console.log("Updated!");
+                    // console.log("Updated!");
 
                     // After we've done the post... then get the updated Saved
                     helpers.getSaved().then(function (response) {
-                        console.log("Current Saved", response.data);
+                        // console.log("Current Saved", response.data);
 
-                        console.log("Saved", response.data);
+                        // console.log("Saved", response.data);
 
                         this.setState({Saved: response.data});
 
@@ -67,6 +71,10 @@ class Main extends React.Component{
     // This function allows childrens to update the parent.
     setTerm(term) {
         this.setState({searchTerm: term});
+    }
+
+    setStartYear(startYear) {
+        this.setState({starYear: startYear});
     }
     // Here we render the function
     render() {
@@ -82,7 +90,9 @@ class Main extends React.Component{
 
                     <div className="col-md-6">
 
-                        <Form setTerm={this.setTerm}/>
+                        <Form setTerm={this.setTerm}
+                              setStartYear={this.setStartYear}
+                        />
 
                     </div>
 

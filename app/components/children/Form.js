@@ -6,7 +6,7 @@ class Form extends React.Component
     // Here we set a generic state associated with the text being searched for
     constructor(props){
         super(props);
-        this.state = {term: ""};
+        this.state = {term: "", startYear: ""};
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -15,19 +15,25 @@ class Form extends React.Component
     // This function will respond to the user input
     handleChange(event) {
 
-        this.setState({term: event.target.value});
+        const target = event.target;
+        const name = target.name;
 
+        this.setState({
+            [name]: event.target.value
+        });
     }
 
     // When a user submits...
     handleSubmit(event) {
-        // prevent the HTML from trying to submit a form if the user hits "Enter" instead of
-        // clicking the button
         event.preventDefault();
+
+        console.log("Form term" ,    this.state.term);
+        console.log("Form startYear" ,    this.state.startYear);
 
         // Set the parent to have the search term
         this.props.setTerm(this.state.term);
-        this.setState({term: ""});
+        this.props.setStartYear(this.state.startYear);
+        this.setState({term: "", startYear: ""});
     }
     // Here we describe this component's render method
     render() {
@@ -39,10 +45,12 @@ class Form extends React.Component
                 <div className="panel-body text-center">
                     <form onSubmit={this.handleSubmit}>
                         <div className="form-group">
+                            {/*Title*/}
                             <h4 className="">
                                 <strong>Title</strong>
                             </h4>
                             <input
+                                name="term"
                                 value={this.state.term}
                                 type="text"
                                 className="form-control text-center"
@@ -51,6 +59,34 @@ class Form extends React.Component
                                 required
                             />
                             <br />
+                            {/*Start Year*/}
+                            <h4 className="">
+                                <strong>Start Year</strong>
+                            </h4>
+                            <input
+                                name="startYear"
+                                value={this.state.startYear}
+                                type="text"
+                                className="form-control text-center"
+                                id="startYear"
+                                onChange={this.handleChange}
+                                required
+                            />
+                            <br />
+                            {/*End Year*/}
+                            <h4 className="">
+                                <strong>End Year</strong>
+                            </h4>
+                            {/*<input*/}
+                                {/*value={this.state.term}*/}
+                                {/*type="text"*/}
+                                {/*className="form-control text-center"*/}
+                                {/*id="term"*/}
+                                {/*onChange={this.handleChange}*/}
+                                {/*required*/}
+                            {/*/>*/}
+                            <br />
+
                             <button
                                 className="btn btn-primary"
                                 type="submit"
