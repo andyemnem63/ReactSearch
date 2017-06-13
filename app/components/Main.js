@@ -32,9 +32,7 @@ class Main extends React.Component{
     componentDidMount() {
         // Get the latest Saved.
         helpers.getSaved().then(function (response) {
-            // console.log(response);
             if (response !== this.state.Saved) {
-                // console.log("Saved", response.data);
                 this.setState({Saved: response.data});
             }
         }.bind(this));
@@ -47,19 +45,12 @@ class Main extends React.Component{
         // Run the query for the Search
         helpers.runQuery(this.state.searchTerm, this.state.starYear).then(function (data) {
             if (data !== this.state.results) {
-                // console.log("Title", this.state.searchTerm);
-                // console.log("Search Data", data);
+                console.log('data' , data[0].lead_paragraph);
                 this.setState({results: data});
-
                 // After we've received the result... then post the search term to our Saved.
                 helpers.postSaved(this.state.searchTerm).then(function () {
-                    // console.log("Updated!");
-
                     // After we've done the post... then get the updated Saved
                     helpers.getSaved().then(function (response) {
-                        // console.log("Current Saved", response.data);
-
-                        // console.log("Saved", response.data);
 
                         this.setState({Saved: response.data});
 
@@ -90,9 +81,7 @@ class Main extends React.Component{
 
                     <div className="col-md-6">
 
-                        <Form setTerm={this.setTerm}
-                              setStartYear={this.setStartYear}
-                        />
+                        <Form setTerm={this.setTerm} setStartYear={this.setStartYear}/>
 
                     </div>
 

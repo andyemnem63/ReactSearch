@@ -27,8 +27,8 @@ class Form extends React.Component
     handleSubmit(event) {
         event.preventDefault();
 
-        console.log("Form term" ,    this.state.term);
-        console.log("Form startYear" ,    this.state.startYear);
+        // console.log("Form term" ,    this.state.term);
+        // console.log("Form startYear" ,    this.state.startYear);
 
         // Set the parent to have the search term
         this.props.setTerm(this.state.term);
