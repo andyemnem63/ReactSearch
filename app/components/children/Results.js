@@ -11,7 +11,14 @@ class Results extends React.Component{
                     <h3 className="panel-title text-center">Results</h3>
                 </div>
                 <div className="panel-body text-center">
-                    <p>{this.props.results}</p>
+                    {/*<p>{this.props.results}</p>*/}
+                    {this.props.results.map(function (search, i) {
+                        return (
+                            <p key={i}>{search}
+                                <button type="button btn-success">Save</button>
+                            </p>
+                        );
+                    })}
                 </div>
             </div>
         );

@@ -3,7 +3,6 @@ import React from "react";
 
 // This is the History component. It will be used to show a log of  recent searches.
     class History extends React.Component {
-    // Here we describe this component's render method
     render() {
         return (
             <div className="panel panel-default">
@@ -15,7 +14,7 @@ import React from "react";
                     {/* Here we use a map function to loop through an array in JSX */}
                     {this.props.Saved.map(function (search, i) {
                         return (
-                            <p key={i}>{search.location} - {search.date}</p>
+                            <p key={i}>{search.title} - {search.date}</p>
                         );
                     })}
                 </div>
@@ -24,5 +23,4 @@ import React from "react";
     }
 };
 
-// Export the component back for use in other files
 export default History;

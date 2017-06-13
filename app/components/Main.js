@@ -20,7 +20,7 @@ class Main extends React.Component{
         this.state = {
             searchTerm: "",
             starYear: "",
-            results: "",
+            results: [],
             Saved: []
         };
 
@@ -46,7 +46,10 @@ class Main extends React.Component{
         helpers.runQuery(this.state.searchTerm, this.state.starYear).then(function (data) {
             if (data !== this.state.results) {
                 console.log('data' , data[0].lead_paragraph);
-                this.setState({results: data});
+                for(var i=0; i < 4; i++){
+                    this.setState({results: this.state.results.concat(data[i].lead_paragraph)});
+                    console.log(this.state.results);
+                }
                 // After we've received the result... then post the search term to our Saved.
                 helpers.postSaved(this.state.searchTerm).then(function () {
                     // After we've done the post... then get the updated Saved
