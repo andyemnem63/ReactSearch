@@ -8,7 +8,7 @@ var geocodeAPI = "35e5548c618555b1a43eb4759d26b260";
 var helper = {
 
   // This function serves our purpose of running the query to geolocate.
-  runQuery: function(title, starYear) {
+  runQuery: function(title) {
     var apiKey = "b1d19e116cfd40d789fc1f8a9404d128";
     var url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${apiKey}&q=${title}`
 

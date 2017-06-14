@@ -19,8 +19,7 @@ class Main extends React.Component {
 
         this.state = {
             searchTerm: "",
-            starYear: "",
-            results: [],
+            results:[],
             Saved: []
         };
 
@@ -44,21 +43,21 @@ class Main extends React.Component {
         if (prevState.searchTerm !== this.state.searchTerm) {
             //Clears the Results array if there is a new Search
             this.setState({results: []});
-            helpers.runQuery(this.state.searchTerm, this.state.starYear).then(function (data) {
+            helpers.runQuery(this.state.searchTerm).then(function (data) {
                 if (data !== this.state.results) {
-                    console.log('data', data[0].lead_paragraph);
                     for (var i = 0; i < 4; i++) {
-                        //Pushes information from api to results array
-                        this.setState({results: this.state.results.concat(data[i].lead_paragraph)});
+                        var newResults = {head: data[i].lead_paragraph, url:data[i].web_url};
+                        this.setState({results: this.state.results.concat(newResults)});
                         console.log(this.state.results);
+                        //Pushes data to results array
+                        // this.setState({results: this.state.results.concat(data[i].lead_paragraph)});
+                        // this.setState({url: this.state.url.concat(data[i].web_url)});
                     }
                     // After we've received the result... then post the search term to our Saved.
                     helpers.postSaved(this.state.searchTerm).then(function () {
                         // After we've done the post... then get the updated Saved
                         helpers.getSaved().then(function (response) {
-
                             this.setState({Saved: response.data});
-
                         }.bind(this));
                     }.bind(this));
                 }
@@ -89,7 +88,7 @@ class Main extends React.Component {
 
                     <div className="col-md-6">
 
-                        <Form setTerm={this.setTerm} setStartYear={this.setStartYear}/>
+                        <Form setTerm={this.setTerm}/>
 
                     </div>
 

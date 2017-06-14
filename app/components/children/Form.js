@@ -27,7 +27,6 @@ class Form extends React.Component
         event.preventDefault();
         // Set the parent to have the search term
         this.props.setTerm(this.state.term);
-        this.props.setStartYear(this.state.startYear);
         this.setState({term: "", startYear: ""});
     }
     // Here we describe this component's render method
