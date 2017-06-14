@@ -11,7 +11,6 @@ var helper = {
   runQuery: function(title, starYear) {
     var apiKey = "b1d19e116cfd40d789fc1f8a9404d128";
     var url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${apiKey}&q=${title}`
-    // var queryURL = "http://api.opencagedata.com/geocode/v1/json?query=" + title + "&pretty=1&key=" + geocodeAPI;
 
     return axios.get(url).then(function(response) {
         var articleTitle = response.data.response.docs;

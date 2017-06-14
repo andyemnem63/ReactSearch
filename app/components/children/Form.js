@@ -26,10 +26,6 @@ class Form extends React.Component
     // When a user submits...
     handleSubmit(event) {
         event.preventDefault();
-
-        // console.log("Form term" ,    this.state.term);
-        // console.log("Form startYear" ,    this.state.startYear);
-
         // Set the parent to have the search term
         this.props.setTerm(this.state.term);
         this.props.setStartYear(this.state.startYear);
@@ -60,23 +56,23 @@ class Form extends React.Component
                             />
                             <br />
                             {/*Start Year*/}
-                            <h4 className="">
-                                <strong>Start Year</strong>
-                            </h4>
-                            <input
-                                name="startYear"
-                                value={this.state.startYear}
-                                type="text"
-                                className="form-control text-center"
-                                id="startYear"
-                                onChange={this.handleChange}
-                                required
-                            />
-                            <br />
+                            {/*<h4 className="">*/}
+                                {/*<strong>Start Year</strong>*/}
+                            {/*</h4>*/}
+                            {/*<input*/}
+                                {/*name="startYear"*/}
+                                {/*value={this.state.startYear}*/}
+                                {/*type="text"*/}
+                                {/*className="form-control text-center"*/}
+                                {/*id="startYear"*/}
+                                {/*onChange={this.handleChange}*/}
+                                {/*required*/}
+                            {/*/>*/}
+                            {/*<br />*/}
                             {/*End Year*/}
-                            <h4 className="">
-                                <strong>End Year</strong>
-                            </h4>
+                            {/*<h4 className="">*/}
+                                {/*<strong>End Year</strong>*/}
+                            {/*</h4>*/}
                             {/*<input*/}
                                 {/*value={this.state.term}*/}
                                 {/*type="text"*/}
