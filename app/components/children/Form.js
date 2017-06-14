@@ -14,7 +14,6 @@ class Form extends React.Component
 
     // This function will respond to the user input
     handleChange(event) {
-
         const target = event.target;
         const name = target.name;
 
@@ -56,19 +55,19 @@ class Form extends React.Component
                             />
                             <br />
                             {/*Start Year*/}
-                            {/*<h4 className="">*/}
-                                {/*<strong>Start Year</strong>*/}
-                            {/*</h4>*/}
-                            {/*<input*/}
-                                {/*name="startYear"*/}
-                                {/*value={this.state.startYear}*/}
-                                {/*type="text"*/}
-                                {/*className="form-control text-center"*/}
-                                {/*id="startYear"*/}
-                                {/*onChange={this.handleChange}*/}
-                                {/*required*/}
-                            {/*/>*/}
-                            {/*<br />*/}
+                            <h4 className="">
+                                <strong>Start Year</strong>
+                            </h4>
+                            <input
+                                name="startYear"
+                                value={this.state.startYear}
+                                type="text"
+                                className="form-control text-center"
+                                id="startYear"
+                                onChange={this.handleChange}
+                                required
+                            />
+                            <br />
                             {/*End Year*/}
                             {/*<h4 className="">*/}
                                 {/*<strong>End Year</strong>*/}

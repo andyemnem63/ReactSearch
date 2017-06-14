@@ -5,7 +5,6 @@ import React from "react";
 import Form from "./children/Form";
 import Results from "./children/Results";
 import Saved from "./children/Saved";
-// import Search from "./utils/helpers";
 
 // Helper for making AJAX requests to our API
 import helpers from "./utils/helpers";
@@ -43,10 +42,13 @@ class Main extends React.Component {
     componentDidUpdate(prevProps, prevState) {
         // Run the query for the Search
         if (prevState.searchTerm !== this.state.searchTerm) {
+            //Clears the Results array if there is a new Search
+            this.setState({results: []});
             helpers.runQuery(this.state.searchTerm, this.state.starYear).then(function (data) {
                 if (data !== this.state.results) {
                     console.log('data', data[0].lead_paragraph);
                     for (var i = 0; i < 4; i++) {
+                        //Pushes information from api to results array
                         this.setState({results: this.state.results.concat(data[i].lead_paragraph)});
                         console.log(this.state.results);
                     }
@@ -63,6 +65,7 @@ class Main extends React.Component {
             }.bind(this));
         }
     }
+
     // This function allows childrens to update the parent.
     setTerm(term) {
         this.setState({searchTerm: term});
@@ -86,7 +89,7 @@ class Main extends React.Component {
 
                     <div className="col-md-6">
 
-                        <Form setTerm={this.setTerm} setStartYear={this.setStartYear} setResults={this.state.results}/>
+                        <Form setTerm={this.setTerm} setStartYear={this.setStartYear}/>
 
                     </div>
 
