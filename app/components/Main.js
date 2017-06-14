@@ -11,7 +11,6 @@ import helpers from "./utils/helpers";
 
 // Creating the Main component
 class Main extends React.Component {
-
     // This is the equivalent of our "getInitialState"
     constructor(props) {
         // This super(props) line lets us access our parents properties as props.
@@ -52,13 +51,6 @@ class Main extends React.Component {
                         console.log(this.state.results);
                         //Pushes data to results array
                     }
-                    // After we've received the result... then post the search term to our Saved.
-                    helpers.postSaved(this.state.searchTerm).then(function () {
-                        // After we've done the post... then get the updated Saved
-                        helpers.getSaved().then(function (response) {
-                            this.setState({Saved: response.data});
-                        }.bind(this));
-                    }.bind(this));
                 }
             }.bind(this));
         }
@@ -73,10 +65,15 @@ class Main extends React.Component {
         this.setState({starYear: startYear});
     }
 
-    getClick() {
-        console.log("clicked");
+    getClick(todo) {
+        helpers.postSaved(todo.head, todo.url).then(function () {
+            // After we've done the post... then get the updated Saved
+            helpers.getSaved().then(function (response) {
+                this.setState({Saved: response.data});
+                console.log('Saved', this.state.Saved);
+            }.bind(this));
+        }.bind(this));
     }
-
     // Here we render the function
     render() {
         return (

@@ -67,7 +67,8 @@ app.post("/api", function(req, res) {
   // We'll use Date.now() to always get the current date time
   Article.create({
     title: req.body.title,
-    date: Date.now()
+    date: Date.now(),
+    url: req.body.url
   }, function(err) {
     if (err) {
       console.log(err);

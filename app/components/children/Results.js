@@ -17,7 +17,7 @@ class Results extends React.Component{
                         return (
                             <p key={i}>
                                 <a href={search.url} target="_blank">{search.head}</a>
-                                <button onClick={this.props.getClicked} type="button btn-success">Save</button>
+                                <button className="o" onClick={this.props.getClicked.bind(this, search)} type="button btn-success">Save</button>
                             </p>
                         );
                     })}

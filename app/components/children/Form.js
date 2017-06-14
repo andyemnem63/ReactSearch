@@ -16,7 +16,6 @@ class Form extends React.Component
     handleChange(event) {
         const target = event.target;
         const name = target.name;
-
         this.setState({
             [name]: event.target.value
         });
@@ -27,7 +26,7 @@ class Form extends React.Component
         event.preventDefault();
         // Set the parent to have the search term
         this.props.setTerm(this.state.term);
-        this.setState({term: "", startYear: ""});
+        this.setState({term: ""});
     }
     // Here we describe this component's render method
     render() {
