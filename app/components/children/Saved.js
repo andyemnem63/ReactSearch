@@ -14,7 +14,7 @@ import React from "react";
                     {/* Here we use a map function to loop through an array in JSX */}
                     {this.props.Saved.map(function (search, i) {
                         return (
-                            <p key={i}>{search.title} - {search.date}</p>
+                            <p key={i}>{search.head} - {search.date} - {search.url}</p>
                         );
                     })}
                 </div>

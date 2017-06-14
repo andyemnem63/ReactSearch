@@ -25,6 +25,7 @@ class Main extends React.Component {
 
         this.setTerm = this.setTerm.bind(this);
         this.setStartYear = this.setStartYear.bind(this);
+        this.getClick = this.getClick.bind(this);
     }
 
     // The moment the page renders get the Saved
@@ -50,8 +51,6 @@ class Main extends React.Component {
                         this.setState({results: this.state.results.concat(newResults)});
                         console.log(this.state.results);
                         //Pushes data to results array
-                        // this.setState({results: this.state.results.concat(data[i].lead_paragraph)});
-                        // this.setState({url: this.state.url.concat(data[i].web_url)});
                     }
                     // After we've received the result... then post the search term to our Saved.
                     helpers.postSaved(this.state.searchTerm).then(function () {
@@ -74,6 +73,10 @@ class Main extends React.Component {
         this.setState({starYear: startYear});
     }
 
+    getClick() {
+        console.log("clicked");
+    }
+
     // Here we render the function
     render() {
         return (
@@ -94,7 +97,7 @@ class Main extends React.Component {
 
                     <div className="col-md-6">
 
-                        <Results results={this.state.results}/>
+                        <Results results={this.state.results} getClicked={this.getClick}/>
 
                     </div>
 

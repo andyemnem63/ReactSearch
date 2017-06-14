@@ -13,11 +13,11 @@ class Results extends React.Component{
                 <div className="panel-body text-center">
                     {this.url}
                   {/*Maps through the results array in the constructor*/}
-                    {this.props.results.map(function (search, i) {
+                    {this.props.results.map((search, i) => {
                         return (
                             <p key={i}>
                                 <a href={search.url} target="_blank">{search.head}</a>
-                                <button type="button btn-success">Save</button>
+                                <button onClick={this.props.getClicked} type="button btn-success">Save</button>
                             </p>
                         );
                     })}
