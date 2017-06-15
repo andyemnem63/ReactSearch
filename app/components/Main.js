@@ -47,9 +47,8 @@ class Main extends React.Component {
                 if (data !== this.state.results) {
                     for (var i = 0; i < 4; i++) {
                         var newResults = {head: data[i].lead_paragraph, url:data[i].web_url};
+                        // Pushes to results array
                         this.setState({results: this.state.results.concat(newResults)});
-                        console.log(this.state.results);
-                        //Pushes data to results array
                     }
                 }
             }.bind(this));

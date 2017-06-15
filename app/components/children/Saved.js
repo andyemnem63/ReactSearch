@@ -15,7 +15,7 @@ import React from "react";
                     {this.props.Saved.map(function (search, i) {
                         return (
                             <div>
-                                <a href={search.url} key={i}>{search.title} - {search.date}</a>
+                                <a href={search.url} target="_blank" key={i}>{search.title} - {search.date}</a>
                                 <button className="btn btn-danger">Delete</button>
                                 <br/>
                             </div>
