@@ -8,9 +8,9 @@ var geocodeAPI = "35e5548c618555b1a43eb4759d26b260";
 var helper = {
 
   // This function serves our purpose of running the query to geolocate.
-  runQuery: function(title) {
+  runQuery: function(title, starYear) {
     var apiKey = "b1d19e116cfd40d789fc1f8a9404d128";
-    var url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${apiKey}&q=${title}`
+    var url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${apiKey}&q=${title}&?being_date=${starYear}`
 
     return axios.get(url).then(function(response) {
         var articleTitle = response.data.response.docs;

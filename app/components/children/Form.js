@@ -6,7 +6,7 @@ class Form extends React.Component
     // Here we set a generic state associated with the text being searched for
     constructor(props){
         super(props);
-        this.state = {term: "", startYear: ""};
+        this.state = {term: "", startYear: "", endYear: ""};
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,9 +24,13 @@ class Form extends React.Component
     // When a user submits...
     handleSubmit(event) {
         event.preventDefault();
-        // Set the parent to have the search term
+    // Gets passed to main
         this.props.setTerm(this.state.term);
-        this.setState({term: ""});
+        this.props.setStartYear(this.state.startYear);
+        this.props.setEndYear(this.state.endYear);
+
+        this.setState({term: "", startYear: "", endYear: ""});
+        console.log("End Year" , this.state.endYear);
     }
     // Here we describe this component's render method
     render() {
@@ -66,18 +70,18 @@ class Form extends React.Component
                                 required
                             />
                             <br />
-                            {/*End Year*/}
-                            {/*<h4 className="">*/}
-                                {/*<strong>End Year</strong>*/}
-                            {/*</h4>*/}
-                            {/*<input*/}
-                                {/*value={this.state.term}*/}
-                                {/*type="text"*/}
-                                {/*className="form-control text-center"*/}
-                                {/*id="term"*/}
-                                {/*onChange={this.handleChange}*/}
-                                {/*required*/}
-                            {/*/>*/}
+                            <h4 className="">
+                                <strong>End Year</strong>
+                            </h4>
+                            <input
+                                name="endYear"
+                                value={this.state.endYear}
+                                type="text"
+                                className="form-control text-center"
+                                id="endYear"
+                                onChange={this.handleChange}
+                                required
+                            />
                             <br />
 
                             <button

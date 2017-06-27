@@ -18,12 +18,15 @@ class Main extends React.Component {
 
         this.state = {
             searchTerm: "",
+            starYear: "",
+            endYear: "",
             results:[],
             Saved: []
         };
 
         this.setTerm = this.setTerm.bind(this);
         this.setStartYear = this.setStartYear.bind(this);
+        this.setEndYear = this.setEndYear.bind(this);
         this.getClick = this.getClick.bind(this);
     }
 
@@ -43,7 +46,7 @@ class Main extends React.Component {
         if (prevState.searchTerm !== this.state.searchTerm) {
             //Clears the Results array if there is a new Search
             this.setState({results: []});
-            helpers.runQuery(this.state.searchTerm).then(function (data) {
+            helpers.runQuery(this.state.searchTerm, this.state.starYear).then(function (data) {
                 if (data !== this.state.results) {
                     for (var i = 0; i < 4; i++) {
                         var newResults = {head: data[i].lead_paragraph, url:data[i].web_url};
@@ -62,6 +65,10 @@ class Main extends React.Component {
 
     setStartYear(startYear) {
         this.setState({starYear: startYear});
+    }
+
+    setEndYear(endYear) {
+        this.setState({endYears: endYear});
     }
 
     getClick(todo) {
@@ -87,7 +94,7 @@ class Main extends React.Component {
 
                     <div className="col-md-6">
 
-                        <Form setTerm={this.setTerm}/>
+                        <Form setTerm={this.setTerm} setStartYear={this.setStartYear} setEndYear={this.setEndYear}/>
 
                     </div>
 
