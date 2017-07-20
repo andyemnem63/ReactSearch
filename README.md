@@ -1,4 +1,4 @@
-# Week of 19 HW: NYT React Search
+# NYT React Search
 
 ### Overview
 
